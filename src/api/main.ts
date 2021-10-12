@@ -1,11 +1,11 @@
-import "reflect-metadata";
 import * as restify from "restify";
 import { Server } from "restify";
-import { injectable, container } from "tsyringe";
+import { injectable } from "tsyringe";
 import dotenv from "dotenv";
+import morgan from "morgan";
 
 @injectable()
-export default class App {
+export default class Main {
   private server: Server;
   private port!: number;
 
@@ -23,6 +23,12 @@ export default class App {
     // Middleware
     this.server.use(restify.plugins.queryParser());
     this.server.use(restify.plugins.bodyParser());
+    this.server.use(morgan("tiny"))
+
+
+
+    // Requiring routes
+    
 
     this.server.listen(this.port, () => {
       console.log(
@@ -35,11 +41,3 @@ export default class App {
     this.server.close(() => `Closing the server......`);
   }
 }
-
-const app = container.resolve(App);
-app.start();
-
-process.on("SIGINT", () => {
-  app.stop();
-  process.exit(0);
-});
