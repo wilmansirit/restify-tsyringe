@@ -1,12 +1,12 @@
-import restify, { Next, Request, Response, Server } from "restify";
+import { Next, Request, Response, Server } from "restify";
 import { RequestHandler } from "restify";
-import { inject, injectable } from "tsyringe";
+import { inject, singleton } from "tsyringe";
 import { CONTROLLERS } from "../controllers";
 import ApiServer from "../server/apiServer";
 import { HttpServer } from "../server/httpServer";
 import { Methods } from "./methods"
 
-@injectable()
+@singleton()
 export default class HttpRouter implements HttpServer{
 
     private server!: Server
@@ -14,7 +14,6 @@ export default class HttpRouter implements HttpServer{
     constructor(@inject(ApiServer) apiServer: ApiServer){
         this.server = apiServer.server;
     }
-
 
     public get(url: string, requestHandler: RequestHandler): void {
         this.addRoute('get', url, requestHandler);
