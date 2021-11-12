@@ -1,11 +1,5 @@
-import restify, {
-  Server,
-  RequestHandler,
-  Request,
-  Response,
-  Next,
-} from "restify";
-import { inject, injectable, container, singleton } from "tsyringe";
+import restify, { Server } from "restify";
+import { inject, singleton } from "tsyringe";
 import dotenv from "dotenv";
 import Middlewares from "../middlewares";
 

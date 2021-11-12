@@ -1,6 +1,6 @@
 import { RequestHandler } from 'restify'
 
-export interface HttpServer {
+export interface Routes {
     get(url: string, requestHandler: RequestHandler): void;
 /*     post(url: string, requestHandler: RequestHandler): void;
     put(url: string, requestHandler: RequestHandler): void;

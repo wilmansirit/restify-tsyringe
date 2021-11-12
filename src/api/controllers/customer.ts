@@ -1,13 +1,13 @@
 import { Controller } from "./controller";
-import { HttpServer } from "../server/httpServer";
+import { Routes } from "../routes/routes.interface";
 import { Response, Request, Next } from "restify";
 
 
 export class Customer implements Controller {
 
-    public initialize(httpServer: HttpServer): void {
+    public initialize(routes: Routes): void {
 
-        httpServer.get("/customer", (req: Request, res: Response, next: Next) => {
+        routes.get("/customer", (req: Request, res: Response, next: Next) => {
             res.send(200, {message: "Customers List"});
         })
 

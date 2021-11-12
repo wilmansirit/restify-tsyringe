@@ -1,5 +1,5 @@
-import { HttpServer } from "../server/httpServer";
+import { Routes } from "../routes/routes.interface";
 
 export interface Controller {
-  initialize(httpServer: HttpServer): void;
+  initialize(routes: Routes): void;
 }

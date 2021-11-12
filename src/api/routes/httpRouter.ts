@@ -3,11 +3,11 @@ import { RequestHandler } from "restify";
 import { inject, singleton } from "tsyringe";
 import { CONTROLLERS } from "../controllers";
 import ApiServer from "../server/apiServer";
-import { HttpServer } from "../server/httpServer";
+import { Routes } from "./routes.interface";
 import { Methods } from "./methods"
 
 @singleton()
-export default class HttpRouter implements HttpServer{
+export default class HttpRouter implements Routes{
 
     private server!: Server
 
